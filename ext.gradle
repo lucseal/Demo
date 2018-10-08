@@ -1,0 +1,109 @@
+ext.deps = [:]
+def versions = [:]
+versions.lifecycle = "1.1.0"
+versions.support = "27.1.1"
+versions.kotlin = "1.2.50"
+
+def deps = [:]
+
+def support = [:]
+support.annotations = "com.android.support:support-annotations:$versions.support"
+support.app_compat = "com.android.support:appcompat-v7:$versions.support"
+support.recyclerview = "com.android.support:recyclerview-v7:$versions.support"
+support.cardview = "com.android.support:cardview-v7:$versions.support"
+support.design = "com.android.support:design:$versions.support"
+support.v4 = "com.android.support:support-v4:$versions.support"
+support.core_utils = "com.android.support:support-core-utils:$versions.support"
+support.constraint = "com.android.support.constraint:constraint-layout:1.1.0"
+support.multidex = "com.android.support:multidex:1.0.1"
+deps.support = support
+
+
+def lifecycle = [:]
+lifecycle.runtime = "android.arch.lifecycle:runtime:$versions.lifecycle"
+lifecycle.extensions = "android.arch.lifecycle:extensions:$versions.lifecycle"
+lifecycle.java8 = "android.arch.lifecycle:common-java8:$versions.lifecycle"
+lifecycle.compiler = "android.arch.lifecycle:compiler:$versions.lifecycle"
+deps.lifecycle = lifecycle
+
+def butterknife = [:]
+butterknife.butterknife = "com.jakewharton:butterknife:8.8.1"
+butterknife.compiler = "com.jakewharton:butterknife:8.8.1"
+deps.butterknife = butterknife
+
+def retrofit = [:]
+retrofit.retrofit = "com.squareup.retrofit2:retrofit:2.4.0"
+retrofit.converter_gson = "com.squareup.retrofit2:converter-gson:2.4.0"
+retrofit.adapter_rxjava2 = "com.squareup.retrofit2:adapter-rxjava2:2.4.0"
+deps.retrofit = retrofit
+
+
+def kotlin = [:]
+kotlin.stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$versions.kotlin"
+kotlin.plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
+deps.kotlin = kotlin
+
+def glide = [:]
+glide.core = "com.github.bumptech.glide:glide:4.7.1"
+glide.compiler = "com.github.bumptech.glide:compiler:4.7.1"
+glide.okhttp = "com.github.bumptech.glide:okhttp3-integration:4.7.1"
+deps.glide = glide
+
+def danmu = [:]
+danmu.core = "com.github.ctiao:DanmakuFlameMaster:0.9.25"
+deps.danmu = danmu
+
+def rxlifecycle = [:]
+//rxlifecycle.kotlin = "com.trello.rxlifecycle2:rxlifecycle-kotlin:2.2.1"
+rxlifecycle.kotlin_android = "com.trello.rxlifecycle2:rxlifecycle-android-lifecycle-kotlin:2.2.1"
+deps.rxlifecycle = rxlifecycle
+
+def thirdUi = [:]
+thirdUi.smartrefresh = "com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-7"
+thirdUi.smartrefreshHeader = "com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-7"
+deps.thirdUi = thirdUi
+
+def bugly = [:]
+bugly.core = "com.tencent.bugly:crashreport:latest.release"
+deps.bugly = bugly
+
+def mta = [:]
+mta.core = "com.qq.mta:mta:3.4.2"
+mta.mid = "com.tencent.mid:mid:3.73-release"
+deps.mta = mta
+
+def alibaba = [:]
+alibaba.oss = "com.aliyun.dpa:oss-android-sdk:2.8.4"
+alibaba.okio = "com.squareup.okio:okio:1.9.0"
+deps.alibaba = alibaba
+
+def wxapi = 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:+'
+deps.wxapi = wxapi
+
+deps.rxjava2 = "io.reactivex.rxjava2:rxjava:2.1.3"
+deps.rx_android = "io.reactivex.rxjava2:rxandroid:2.0.2"
+deps.gson = "com.google.code.gson:gson:2.8.2"
+deps.http_log = "com.squareup.okhttp3:logging-interceptor:3.10.0"
+deps.socket_io = "com.github.nkzawa:socket.io-client:0.8.3"
+deps.textview = "com.binaryfork:spanny:1.0.4"
+deps.exoplayer = "com.google.android.exoplayer:exoplayer:2.7.3"
+deps.leonids = "com.plattysoft.leonids:LeonidsLib:1.3.2"
+deps.leakcanary = "com.squareup.leakcanary:leakcanary-android:1.5.4"
+deps.leakcanary_no = "com.squareup.leakcanary:leakcanary-android-no-op:1.5.4"
+deps.recycleradapter = "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.40"
+deps.recyclerdivider = "com.yqritc:recyclerview-flexibledivider:1.4.0"
+deps.banner = "com.youth.banner:banner:1.4.10"
+deps.findbugs = "com.google.code.findbugs:jsr305:3.0.2"
+deps.logger = "com.orhanobut:logger:2.2.0"
+
+
+ext.deps = deps
+
+
+
+def build_versions = [:]
+build_versions.min_sdk = 21
+build_versions.target_sdk = 22
+build_versions.compile_sdk = 27
+build_versions.build_tools = "27.0.3"
+ext.build_versions = build_versions
