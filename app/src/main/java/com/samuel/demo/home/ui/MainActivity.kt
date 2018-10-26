@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import com.samuel.demo.R
 import com.samuel.demo.coordinator.CoorActivity
+import com.samuel.demo.coordinator.ScrollingActivity
 import com.samuel.demo.ocrBd.BdOcrMainActivity
 import com.samuel.demo.ocrTx.ui.TxOcrActivity
 import com.samuel.demo.ocrXf.ui.XfOcrActivity
@@ -30,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         toCoor.setOnClickListener {
-            startActivity(CoorActivity.intent(this))
+            startActivity(ScrollingActivity.intent(this))
         }
 
     }

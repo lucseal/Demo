@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.samuel.demo">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".BasicApp"
         android:allowBackup="true"
@@ -10,29 +13,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.samuel.demo.home.ui.MainActivity">
+        <activity android:name=".home.ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".ocrTx.ui.TxOcrActivity" />
-
         <activity android:name=".ocrXf.ui.XfOcrActivity" />
-
         <activity android:name=".ocrBd.BdOcrMainActivity" />
-
         <activity
             android:name=".ocrBd.IDCardActivity"
             android:label="@string/idCardLabel" />
-
         <activity android:name=".coordinator.CoorActivity" />
-
+        <activity
+            android:name=".coordinator.ScrollingActivity"
+            android:label="@string/title_activity_scrolling"
+            android:theme="@style/AppTheme"></activity>
     </application>
-
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>
