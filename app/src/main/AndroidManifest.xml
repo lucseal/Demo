@@ -13,6 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".home.ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,6 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name=".ocrTx.ui.TxOcrActivity" />
         <activity android:name=".ocrXf.ui.XfOcrActivity" />
         <activity android:name=".ocrBd.BdOcrMainActivity" />
@@ -30,7 +32,10 @@
         <activity
             android:name=".coordinator.ScrollingActivity"
             android:label="@string/title_activity_scrolling"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
+
+        <activity android:name=".nav.NavActivity" />
+
     </application>
 
 </manifest>

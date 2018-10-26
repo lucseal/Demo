@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/mainPageFragment">
+
+    <fragment
+        android:id="@+id/mainPageFragment"
+        android:name="com.samuel.demo.nav.MainPageFragment"
+        android:label="MainPageFragment">
+        <action
+            android:id="@+id/action_mainPageFragment_to_page2Fragment"
+            app:destination="@id/page2Fragment"
+            app:enterAnim="@anim/enter_anim"
+            app:exitAnim="@anim/exit_anim"
+            app:popEnterAnim="@anim/pop_enter_anim"
+            app:popExitAnim="@anim/pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/page2Fragment"
+        android:name="com.samuel.demo.nav.Page2Fragment"
+        android:label="Page2Fragment">
+        <action
+            android:id="@+id/action_page2Fragment_to_mainPageFragment2"
+            app:destination="@id/mainPageFragment"
+            app:enterAnim="@anim/enter_anim"
+            app:exitAnim="@anim/exit_anim"
+            app:popEnterAnim="@anim/pop_enter_anim"
+            app:popExitAnim="@anim/pop_exit_anim" />
+        <action
+            android:id="@+id/action_page2Fragment_to_nav_3"
+            app:destination="@id/nav_3"
+            app:enterAnim="@anim/enter_anim"
+            app:exitAnim="@anim/exit_anim"
+            app:popEnterAnim="@anim/pop_enter_anim"
+            app:popExitAnim="@anim/pop_exit_anim" />
+    </fragment>
+
+    <navigation
+        android:id="@+id/nav_3"
+        app:startDestination="@id/page3Fragment">
+
+        <fragment
+            android:id="@+id/page3Fragment"
+            android:name="com.samuel.demo.nav.Page3Fragment"
+            android:label="Page3Fragment" />
+    </navigation>
+
+</navigation>
