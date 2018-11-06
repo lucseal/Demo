@@ -11,6 +11,7 @@ import com.samuel.demo.nav.NavActivity
 import com.samuel.demo.ocrBd.BdOcrMainActivity
 import com.samuel.demo.ocrTx.ui.TxOcrActivity
 import com.samuel.demo.ocrXf.ui.XfOcrActivity
+import com.samuel.demo.speech.SpeechActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -38,6 +39,10 @@ class MainActivity : AppCompatActivity() {
 
         nav.setOnClickListener {
             startActivity(NavActivity.intent(this))
+        }
+
+        speech.setOnClickListener {
+            startActivity(Intent(this, SpeechActivity::class.java))
         }
 
     }

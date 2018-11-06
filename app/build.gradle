@@ -35,18 +35,15 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation deps.support.app_compat
     implementation deps.support.v4
     implementation deps.support.design
     implementation deps.support.constraint
-
     implementation deps.kotlin.stdlib
-
     implementation deps.lifecycle.runtime
     implementation deps.lifecycle.extensions
     kapt deps.lifecycle.compiler
-
     implementation deps.retrofit.retrofit
     implementation deps.retrofit.converter_gson
     implementation deps.retrofit.adapter_rxjava2
@@ -54,8 +51,8 @@ dependencies {
     implementation deps.rx_android
     implementation deps.gson
     implementation deps.http_log
-
     implementation files('libs/ocr-sdk.jar')
     implementation project(path: ':ocr_ui')
     implementation 'android.arch.navigation:navigation-fragment:1.0.0-alpha06'
+    implementation 'com.microsoft.cognitiveservices.speech:client-sdk:1.0.1'
 }
