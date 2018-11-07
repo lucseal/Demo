@@ -1,6 +1,6 @@
 package com.samuel.demo.data
 
-import com.samuel.demo.bean.TxOcrResult
+import com.samuel.demo.ocr.bean.TxOcrResult
 import io.reactivex.Single
 import okhttp3.RequestBody
 import retrofit2.http.*

@@ -1,7 +1,7 @@
 /*
  * Copyright (C) 2017 Baidu, Inc. All Rights Reserved.
  */
-package com.samuel.demo.ocrBd;
+package com.samuel.demo.ocr.ocrBd;
 
 import java.io.File;
 

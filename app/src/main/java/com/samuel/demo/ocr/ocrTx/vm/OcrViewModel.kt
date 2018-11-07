@@ -1,8 +1,8 @@
-package com.samuel.demo.ocrTx.vm
+package com.samuel.demo.ocr.ocrTx.vm
 
 import android.app.Application
 import com.samuel.demo.base.BaseVM
-import com.samuel.demo.bean.TxOcrResult
+import com.samuel.demo.ocr.bean.TxOcrResult
 import com.samuel.demo.data.DataRepository
 import com.samuel.demo.ex.getData
 import io.reactivex.Single

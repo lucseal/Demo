@@ -1,4 +1,4 @@
-package com.samuel.demo.bean
+package com.samuel.demo.ocr.bean
 
 /**
  * @Description:

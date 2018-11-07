@@ -22,11 +22,11 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ocrTx.ui.TxOcrActivity" />
-        <activity android:name=".ocrXf.ui.XfOcrActivity" />
-        <activity android:name=".ocrBd.BdOcrMainActivity" />
+        <activity android:name="com.samuel.demo.ocr.ocrTx.ui.TxOcrActivity" />
+        <activity android:name="com.samuel.demo.ocr.ocrXf.ui.XfOcrActivity" />
+        <activity android:name=".ocr.ocrBd.BdOcrMainActivity" />
         <activity
-            android:name=".ocrBd.IDCardActivity"
+            android:name=".ocr.ocrBd.IDCardActivity"
             android:label="@string/idCardLabel" />
         <activity android:name=".coordinator.CoorActivity" />
         <activity

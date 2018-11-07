@@ -1,15 +1,11 @@
-package com.samuel.demo.ocrXf.vm
+package com.samuel.demo.ocr.ocrXf.vm
 
 import android.app.Application
 import com.samuel.demo.base.BaseVM
-import com.samuel.demo.bean.TxOcrResult
 import com.samuel.demo.data.DataRepository
 import com.samuel.demo.ex.getData
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
-import okhttp3.MediaType
-import okhttp3.RequestBody
-import org.json.JSONObject
 
 /**
  * @Description:

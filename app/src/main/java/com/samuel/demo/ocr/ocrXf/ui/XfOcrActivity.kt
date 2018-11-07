@@ -1,31 +1,33 @@
-package com.samuel.demo.ocrTx.ui
+package com.samuel.demo.ocr.ocrXf.ui
 
 
 import android.content.Context
 import android.content.Intent
 import android.graphics.*
 import android.os.Bundle
+import android.util.Base64
 import android.widget.Toast
 import com.samuel.demo.R
 import com.samuel.demo.Unique
 import com.samuel.demo.base.BaseActivity
-import com.samuel.demo.bean.TxOcrItem
-import com.samuel.demo.bean.TxOcrResult
-import com.samuel.demo.txApi.Sign
+import com.samuel.demo.ocr.bean.TxOcrItem
 import com.samuel.demo.utils.BitmapUtils
 import com.samuel.demo.utils.FileTrans
 import com.samuel.demo.utils.LogUtils
 import com.samuel.demo.utils.ToastUtils
 import kotlinx.android.synthetic.main.activity_ocr.*
-import com.samuel.demo.ocrTx.vm.OcrViewModel
+import com.samuel.demo.ocr.ocrXf.vm.XfOcrViewModel
+import com.samuel.demo.security.Md5
+import org.json.JSONObject
+import java.util.*
 
 /**
  * @Description:
  * @author sunyao
  * @date 2018/9/19 下午3:00
  */
-class TxOcrActivity : BaseActivity() {
-    private lateinit var ocrVM: OcrViewModel
+class XfOcrActivity : BaseActivity() {
+    private lateinit var xfOcrVM: XfOcrViewModel
     private var filePath = ""
     private var fileBitmap: Bitmap? = null
     private lateinit var drawPaint: Paint
@@ -35,7 +37,7 @@ class TxOcrActivity : BaseActivity() {
         private const val REQUEST_CODE = 100
 
         fun intent(context: Context): Intent {
-            val intent = Intent(context, TxOcrActivity::class.java)
+            val intent = Intent(context, XfOcrActivity::class.java)
             return intent
         }
     }
@@ -44,7 +46,7 @@ class TxOcrActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ocr)
 
-        ocrVM = createViewModel(OcrViewModel::class.java)
+        xfOcrVM = createViewModel(XfOcrViewModel::class.java)
         initPaint()
 
         openAlbum.setOnClickListener {
@@ -103,7 +105,7 @@ class TxOcrActivity : BaseActivity() {
         fileBitmap = BitmapUtils.bitmap2Gray(fileBitmap!!)
         val imageStr = FileTrans.bitmap2base64(fileBitmap!!)
 
-        ocrVM.requestOcr(Unique.TENCENT_OCR_HAND_WRITE, txSignHeader(), Unique.TENCENT_API_APP_ID.toString(), imageStr)
+        xfOcrVM.requestOcr(Unique.XF_OCR_HAND_WRITE, xfSignHeader(), imageStr)
                 .subscribe({
                     hideLoadDialog()
                     ocrSuccess(it)
@@ -113,17 +115,17 @@ class TxOcrActivity : BaseActivity() {
                 })
     }
 
-    private fun ocrSuccess(result: TxOcrResult) {
+    private fun ocrSuccess(result: Any) {
         LogUtils.d(result.toString(), TAG)
-        var resultStr = ""
-        val items = result.items
-        for (i in items.indices) {
-            val item = items[i]
-            resultStr += "${i + 1}：${item.itemstring}\n      坐标：[${item.itemcoord.x}, ${item.itemcoord.y}, ${item.itemcoord.width}, ${item.itemcoord.height}]\n\n"
-        }
-        ocrResult.text = resultStr
-
-        drawCoord(items)
+//        var resultStr = ""
+//        val items = result.items
+//        for (i in items.indices) {
+//            val item = items[i]
+//            resultStr += "${i + 1}：${item.itemstring}\n      坐标：[${item.itemcoord.x}, ${item.itemcoord.y}, ${item.itemcoord.width}, ${item.itemcoord.height}]\n\n"
+//        }
+//        ocrResult.text = resultStr
+//
+//        drawCoord(items)
     }
 
     private fun drawCoord(items: List<TxOcrItem>) {
@@ -169,16 +171,21 @@ class TxOcrActivity : BaseActivity() {
         }
     }
 
-    private fun txSignHeader(): HashMap<String, String> {
+    private fun xfSignHeader(): HashMap<String, String> {
         val headerMap = HashMap<String, String>()
-        headerMap["host"] = "recognition.image.myqcloud.com"
-        headerMap["content-type"] = "application/json"
-        val signStr = Sign.appSign(Unique.TENCENT_API_APP_ID,
-                Unique.TENCENT_API_SECRET_ID,
-                Unique.TENCENT_API_SECRET_KEY,
-                "",
-                1 * 60 * 60)
-        headerMap["authorization"] = signStr
+        val appid = Unique.XF_APP_ID
+        val apiKey = Unique.XF_API_KEY
+        val curTime = (System.currentTimeMillis() / 1000).toString()
+        val json = JSONObject()
+                .put("language", "cn|en")
+                .put("location", true)
+                .toString().toByteArray()
+        val params = Base64.encodeToString(json, Base64.NO_WRAP)
+        val checkSum = Md5.encode(apiKey + curTime + params)
+        headerMap["X-Appid"] = appid
+        headerMap["X-CurTime"] = curTime
+        headerMap["X-Param"] = params
+        headerMap["X-CheckSum"] = checkSum
 
         return headerMap
     }

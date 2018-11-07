@@ -3,14 +3,12 @@ package com.samuel.demo.home.ui
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import androidx.navigation.NavAction
 import com.samuel.demo.R
-import com.samuel.demo.coordinator.CoorActivity
 import com.samuel.demo.coordinator.ScrollingActivity
 import com.samuel.demo.nav.NavActivity
-import com.samuel.demo.ocrBd.BdOcrMainActivity
-import com.samuel.demo.ocrTx.ui.TxOcrActivity
-import com.samuel.demo.ocrXf.ui.XfOcrActivity
+import com.samuel.demo.ocr.ocrBd.BdOcrMainActivity
+import com.samuel.demo.ocr.ocrTx.ui.TxOcrActivity
+import com.samuel.demo.ocr.ocrXf.ui.XfOcrActivity
 import com.samuel.demo.speech.SpeechActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
